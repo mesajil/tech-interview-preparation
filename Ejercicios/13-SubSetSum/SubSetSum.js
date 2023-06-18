@@ -17,9 +17,9 @@
 function subsetSum(nums, n) {
   if (!nums.length) return false;
   const first = nums[0]
-  return first === n ||
-    subsetSum(nums.slice(1), n - first) ||
-    subsetSum(nums.slice(1), n)
+  return first === n
+    || subsetSum(nums.slice(1), n - first)
+    || subsetSum(nums.slice(1), n)
 }
 
 module.exports = subsetSum
