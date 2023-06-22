@@ -19,20 +19,15 @@
 // }
 
 
-function longestIncreasingSubsequence(nums, top = -1) {
+function longestIncreasingSubsequence(nums, prev = -Infinity) {
   // Your code here:
-  /**
-   * The solution is between
-   *    Base case. No numbers are given
-   *    1. Longest sequence considering the first element
-   *    2. Longest sequence without the first element
-   */
   if (!nums.length) return 0
-  const case1 = (nums[0] > top)
-    ? 1 + longestIncreasingSubsequence(nums.slice(1), nums[0])
-    : 0
-  const case2 = longestIncreasingSubsequence(nums.slice(1), top)
-  return Math.max(case1, case2)
+  const f = longestIncreasingSubsequence;
+  const current = nums[0]
+  const seqRest = f(nums.slice(1), prev)
+  if (current < prev) return seqRest;
+  const seqCurrent =  1 + f(nums.slice(1), current);
+  return Math.max(seqCurrent, seqRest)
 }
 
 module.exports = longestIncreasingSubsequence

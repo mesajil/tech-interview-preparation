@@ -1,12 +1,12 @@
 function curry (fn) {
   // Your code here:
 
-  const numExpectedParams = fn.length;
+  const numParams = fn.length;
   const params = []
 
   const nextCaller = (arg) => {
     params.push(arg)
-    if (params.length === numExpectedParams)
+    if (params.length === numParams)
       return fn(...params)
     return nextCaller
   }
